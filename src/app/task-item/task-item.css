@@ -1,0 +1,19 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 6px auto;
+  max-width: 350px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+button {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+}

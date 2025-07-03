@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { UserCardComponent } from './user-card/user-card';
+import { TaskListComponent } from './task-list/task-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [UserCardComponent, TaskListComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'my-first-app';
+  title = 'My First Angular App';
 }
