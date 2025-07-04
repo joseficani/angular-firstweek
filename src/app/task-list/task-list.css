@@ -1,12 +1,42 @@
+
+/* .success-banner {
+  width: 100%;
+  background-color: #28a745; 
+  color: #ffffff;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
+.success-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
 .add-task {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .add-task input {
   flex: 1;
-  padding: 8px;
+  padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -25,7 +55,6 @@
 .add-task button:hover {
   background-color: #45a049;
 }
-
 .task-list-container {
   max-width: 600px;
   margin: 0 auto;

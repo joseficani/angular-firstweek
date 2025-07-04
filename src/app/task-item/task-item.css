@@ -2,46 +2,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 6px auto;
-  border-radius: 6px;
-  background-color: #fff;
-  max-width: 600px;
+  margin-bottom: 10px;
+  gap: 10px;
+  padding: 6px;
+  border-bottom: 1px solid #eee;
 }
 
-.task-item.completed {
+.task-text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.task-text.completed {
   text-decoration: line-through;
-  color: gray;
-  background-color: #f9f9f9;
+  color: #6c757d;
 }
 
-.task-item .buttons {
+.task-buttons {
   display: flex;
-  gap: 5px;
+  gap: 6px;
 }
 
-.task-item .buttons button {
-  padding: 4px 8px;
+button {
+  padding: 4px 10px;
   border: none;
   border-radius: 4px;
+  color: #fff;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
-.task-item .buttons button:first-child {
-  background-color: #2196F3;
-  color: white;
+.btn-done {
+  background-color: #28a745; 
 }
 
-.task-item .buttons button:first-child:hover {
-  background-color: #0b7dda;
+.btn-undone {
+  background-color: #dc3545; 
 }
 
-.task-item .buttons button:last-child {
-  background-color: #f44336;
-  color: white;
+.btn-delete {
+  background-color: #6c757d; 
+  
 }
 
-.task-item .buttons button:last-child:hover {
-  background-color: #da190b;
+button:hover {
+  opacity: 0.9;
 }

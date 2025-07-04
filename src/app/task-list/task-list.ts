@@ -35,9 +35,11 @@
 //   }
 // }
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // ✅ ADD THIS
+import { FormsModule } from '@angular/forms';
 import { TaskItemComponent } from '../task-item/task-item';
+
 
 interface Task {
   text: string;
@@ -51,14 +53,45 @@ interface Task {
   templateUrl: './task-list.html',
   styleUrl: './task-list.css'
 })
+// export class TaskListComponent {
+//   tasks: Task[] = [
+//     { text: 'Buy groceries', done: false },
+//     { text: 'Walk the dog', done: false },
+//     { text: 'Finish homework', done: false }
+//   ];
+
+//   newTask = '';
+
+//   addTask() {
+//     if (this.newTask.trim()) {
+//       this.tasks.push({ text: this.newTask.trim(), done: false });
+//       this.newTask = '';
+//     }
+//   }
+
+//   markDone(index: number) {
+//     this.tasks[index].done = !this.tasks[index].done;
+//   }
+
+//   handleDelete(index: number) {
+//     this.tasks.splice(index, 1);
+//   }
+// }
+
 export class TaskListComponent {
   tasks: Task[] = [
     { text: 'Buy groceries', done: false },
     { text: 'Walk the dog', done: false },
     { text: 'Finish homework', done: false }
   ];
+  newTask: string = '';
 
-  newTask = '';
+  showSuccess = false;
+  deletedTaskName = ''; // ✅ Make sure this line is here!
+
+  taskToDeleteIndex: number | null = null;
+
+  constructor(private modalService: NgbModal) {}
 
   addTask() {
     if (this.newTask.trim()) {
@@ -67,11 +100,27 @@ export class TaskListComponent {
     }
   }
 
-  markDone(index: number) {
+  toggleDone(index: number) {
     this.tasks[index].done = !this.tasks[index].done;
   }
 
-  handleDelete(index: number) {
-    this.tasks.splice(index, 1);
+  confirmDelete(content: any, index: number) {
+    this.taskToDeleteIndex = index;
+    this.modalService.open(content);
+  }
+
+  deleteTask() {
+    if (this.taskToDeleteIndex !== null) {
+      const deletedTask = this.tasks[this.taskToDeleteIndex].text;
+      this.tasks.splice(this.taskToDeleteIndex, 1);
+      this.taskToDeleteIndex = null;
+
+      this.deletedTaskName = deletedTask;  // ✅ Sets the name of deleted task
+      this.showSuccess = true;
+
+      setTimeout(() => {
+        this.showSuccess = false;
+      }, 3000);
+    }
   }
 }

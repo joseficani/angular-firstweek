@@ -1,9 +1,16 @@
-<div class="task-item" [ngClass]="{ 'completed': done }">
-  {{ task }}
-  <div class="buttons">
-    <button (click)="toggleDone()">
+<div class="task-item">
+  <span class="task-text" [class.completed]="done">{{ task }}</span>
+
+  <div class="task-buttons">
+    <button
+      (click)="onToggleDone()"
+      [ngClass]="{ 'btn-done': done, 'btn-undone': !done }"
+    >
       {{ done ? 'Undo' : 'Done' }}
     </button>
-    <button (click)="deleteTask()">Delete</button>
+
+    <button (click)="onDelete()" class="btn-delete">
+      Delete
+    </button>
   </div>
 </div>

@@ -15,26 +15,47 @@
     (delete)="handleDelete($event)">
   </app-task-item>
 </ng-container> -->
+
+<!-- Success Banner: Full width -->
+<div *ngIf="showSuccess" class="success-banner">
+  You have successfully deleted <strong>{{ deletedTaskName }}</strong>
+</div>
+
 <div class="task-list-container">
   <h2>My Task List</h2>
 
   <div class="add-task">
     <input
       type="text"
-      placeholder="New task"
+      placeholder="Enter a task"
       [(ngModel)]="newTask"
       (keyup.enter)="addTask()"
     />
-    <button (click)="addTask()">Add</button>
+    <button (click)="addTask()" class="btn btn-primary">Add</button>
   </div>
 
-  <ng-container *ngFor="let task of tasks; index as i">
+  <div *ngFor="let task of tasks; index as i">
     <app-task-item
       [task]="task.text"
       [done]="task.done"
       [index]="i"
-      (delete)="handleDelete($event)"
-      (markDone)="markDone($event)">
+      (markDone)="toggleDone($event)"
+      (delete)="confirmDelete(deleteModal, $event)">
     </app-task-item>
-  </ng-container>
+  </div>
+
+  <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to delete
+      <strong>{{ tasks[taskToDeleteIndex!].text }}</strong>?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+      <button type="button" class="btn btn-danger" (click)="deleteTask(); modal.close()">Continue</button>
+    </div>
+  </ng-template>
 </div>
