@@ -1,3 +1,44 @@
-h2 {
-  margin-bottom: 10px;
+.add-task {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.add-task button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #45a049;
+}
+
+.task-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media (max-width: 600px) {
+  .add-task {
+    flex-direction: column;
+  }
+
+  .add-task input,
+  .add-task button {
+    width: 100%;
+  }
 }

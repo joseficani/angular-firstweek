@@ -1,8 +1,40 @@
-<h2>My Task List</h2>
+<!-- <h2>My Task List</h2>
 
 <ng-container *ngFor="let task of tasks">
   <app-task-item
     [task]="task"
     (delete)="handleDelete($event)">
   </app-task-item>
-</ng-container>
+</ng-container> -->
+<!-- <h2>My Task List</h2>
+
+<ng-container *ngFor="let task of tasks; index as i">
+  <app-task-item
+    [task]="task"
+    [index]="i"
+    (delete)="handleDelete($event)">
+  </app-task-item>
+</ng-container> -->
+<div class="task-list-container">
+  <h2>My Task List</h2>
+
+  <div class="add-task">
+    <input
+      type="text"
+      placeholder="New task"
+      [(ngModel)]="newTask"
+      (keyup.enter)="addTask()"
+    />
+    <button (click)="addTask()">Add</button>
+  </div>
+
+  <ng-container *ngFor="let task of tasks; index as i">
+    <app-task-item
+      [task]="task.text"
+      [done]="task.done"
+      [index]="i"
+      (delete)="handleDelete($event)"
+      (markDone)="markDone($event)">
+    </app-task-item>
+  </ng-container>
+</div>
