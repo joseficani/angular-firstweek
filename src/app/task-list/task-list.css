@@ -55,10 +55,28 @@
 .add-task button:hover {
   background-color: #45a049;
 }
+
 .task-list-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 10px;
+}
+
+.task-item-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.task-link {
+  flex: 1;
+  text-decoration: none;
+  color: #333;
+}
+
+.task-link:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {

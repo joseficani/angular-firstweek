@@ -1,0 +1,34 @@
+<!-- <div class="content-wrapper">
+  <h2>Task Details</h2>
+
+  <div *ngIf="task">
+    <p><strong>Task:</strong> {{ task.text }}</p>
+    <p><strong>Status:</strong> {{ task.done ? 'Done ✅' : 'Not Done ❌' }}</p>
+
+    <button class="btn btn-success" (click)="toggleDone()">Toggle Done/Undo</button>
+    <button class="btn btn-danger" (click)="deleteTask()">Delete</button>
+  </div>
+
+  <div *ngIf="!task">
+    <p>No task found.</p>
+  </div>
+</div> -->
+
+
+<div class="content-wrapper">
+  <h2>Task Details</h2>
+
+  <div *ngIf="task as t; else noTask">
+    <p><strong>Task:</strong> {{ t.text }}</p>
+    <p><strong>Status:</strong> {{ t.done ? '✅ Done' : '❌ Not Done' }}</p>
+    <p><strong>Created At:</strong> {{ t.createdAt || 'N/A' }}</p>
+    <p><strong>Priority:</strong> {{ t.priority || 'Normal' }}</p>
+
+    <button class="btn btn-success" (click)="toggleDone()">Toggle Done/Undo</button>
+    <button class="btn btn-danger" (click)="deleteTask()">Delete</button>
+  </div>
+
+  <ng-template #noTask>
+    <p>No task found.</p>
+  </ng-template>
+</div>
