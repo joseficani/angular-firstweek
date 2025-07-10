@@ -84,7 +84,7 @@
  
   <div *ngFor="let task of tasks; index as i" class="task-item-row">
     
-    <a [routerLink]="['/task', i]" class="task-link">
+    <a [routerLink]="['/tasks', i]" class="task-link">
       {{ task.text }}
     </a>
 
