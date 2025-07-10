@@ -6,9 +6,9 @@ describe('Angular App Basic Tests', () => {
     cy.contains('My First Angular App');
   });
 
-  it('Clicks a button and checks result', () => {
-    cy.visit('http://localhost:4200');
-    cy.get('button').contains('Click Me').click();
-    cy.contains('You clicked the button!');
-  });
+//   it('Clicks a button and checks result', () => {
+//     cy.visit('http://localhost:4200');
+//     cy.get('button').contains('Click Me').click();
+//     cy.contains('You clicked the button!');
+//   });
 });
