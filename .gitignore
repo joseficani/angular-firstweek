@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 /bazel-out
+# Ignore Cypress screenshots and videos
+cypress/screenshots/
+cypress/videos/
 
 # Node
 /node_modules
