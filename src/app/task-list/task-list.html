@@ -64,7 +64,7 @@
 
 
 
-<div *ngIf="showSuccess" class="success-banner">
+<!-- <div *ngIf="showSuccess" class="success-banner">
   You have successfully deleted <strong>{{ deletedTaskName }}</strong>
 </div>
 
@@ -109,6 +109,65 @@
     <div class="modal-body">
       Are you sure you want to delete
       <strong>{{ tasks[taskToDeleteIndex!].text }}</strong>?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+      <button type="button" class="btn btn-danger" (click)="deleteTask(); modal.close()">Continue</button>
+    </div>
+  </ng-template>
+</div> -->
+
+
+<div *ngIf="showSuccess" class="success-banner">
+  You have successfully deleted <strong>{{ deletedTaskName }}</strong>
+</div>
+
+<div class="task-list-container">
+  <h2>My Task List</h2>
+
+  <div class="add-task">
+    <input
+      type="text"
+      placeholder="Enter a task"
+      [(ngModel)]="newTask"
+      (keyup.enter)="addTask()"
+    />
+    <button (click)="addTask()" class="btn btn-primary">Add</button>
+  </div>
+
+  <!-- 👇 Show 'No tasks found' if list is empty -->
+  <div *ngIf="tasks.length === 0" class="empty-message">
+    No tasks found
+  </div>
+
+  <!-- 👇 Otherwise show tasks -->
+  <div *ngFor="let task of tasks; index as i" class="task-item-row">
+    <a [routerLink]="['/tasks', i]" class="task-link">
+      {{ task.text }}
+    </a>
+
+    <button
+      (click)="toggleDone(i)"
+      [ngClass]="task.done ? 'btn btn-success' : 'btn btn-danger'">
+      {{ task.done ? 'Undo' : 'Done' }}
+    </button>
+
+    <button
+      (click)="confirmDelete(deleteModal, i)"
+      class="btn btn-secondary">
+      Delete
+    </button>
+  </div>
+
+  <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to delete
+    <strong>{{ tasks[taskToDeleteIndex!].text }}</strong>
+
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>

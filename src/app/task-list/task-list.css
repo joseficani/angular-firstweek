@@ -51,6 +51,12 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.empty-message {
+  text-align: center;
+  color: #888;
+  margin-top: 1rem;
+  font-style: italic;
+}
 
 .add-task button:hover {
   background-color: #45a049;
